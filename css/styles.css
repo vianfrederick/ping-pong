@@ -1,0 +1,46 @@
+.hide {
+    display: none;
+}
+
+.start {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+}
+
+.start-btn {
+    width: 150px;
+    height: 105px;
+    background-color: white;
+    color: black;
+    font-size: 3rem;
+    font-family: 'Gamja Flower', cursive;
+    border-radius: 100%;
+}
+
+body {
+    padding: 5%;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: center;
+    background-color: grey;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 2rem;
+    position: relative;
+}
+
+h2 {
+    font-size: 4rem;
+    margin-top: 0;
+    margin-bottom: 1%;
+}
+
+.player {
+    display: inline;
+    margin: 15%;
+}
+
+canvas {
+    border: 1px solid black;
+    background: black;
+}
