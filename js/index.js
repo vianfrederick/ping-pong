@@ -165,24 +165,51 @@ function gameOver2() {
 
 
 
-function playerupdatePos(dir, player) {
+function player1updatePos(dir, player) {
     player.stick.y += dir;
     if (player.stick.y < 10 || player.stick.y > 490) {
         player.stick.y -= dir;
     }
 }
 
-document.addEventListener("keydown", (event) => {
-    if (event.keyCode === 75) {
-        playerupdatePos(-20, player2);
-    } else if (event.keyCode === 77) {
-        playerupdatePos(20, player2);
-    } else if (event.keyCode === 81) {
-        playerupdatePos(-20, player1);
-    } else if (event.keyCode === 65) {
-        playerupdatePos(20, player1);
-    } else {
+function player2updatePos(dir, player) {
+    player.stick.y += dir;
+    if (player.stick.y < 10 || player.stick.y > 490) {
+        player.stick.y -= dir;
+    }
+}
 
+var map = { 75: false, 81: false, 77: false, 65: false };
+document.body.addEventListener('keydown', function(e) {
+    var e = e || event; //to deal with old IE
+    if (e.keyCode in map) {
+        map[e.keyCode] = true;
+        if (map[75] && map[81]) {
+            player1updatePos(-20, player1);
+            player2updatePos(-20, player2);
+        } else if (map[81] && map[77]) {
+            player1updatePos(-20, player1);
+            player2updatePos(20, player2);
+        } else if (map[65] && map[77]) {
+            player1updatePos(20, player1);
+            player2updatePos(20, player2);
+        } else if (map[65] && map[75]) {
+            player1updatePos(20, player1);
+            player2updatePos(-20, player2);
+        } else if (map[65]) {
+            player1updatePos(20, player1);
+        } else if (map[81]) {
+            player1updatePos(-20, player1);
+        } else if (map[75]) {
+            player2updatePos(-20, player2);
+        } else if (map[77]) {
+            player1updatePos(20, player2);
+        }
+    }
+});
+document.body.addEventListener('keyup', function(e) {
+    if (e.keyCode in map) {
+        map[e.keyCode] = false;
     }
 });
 
