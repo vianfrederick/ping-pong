@@ -5,7 +5,6 @@ const context = canvas.getContext('2d');
 
 
 context.strokeStyle = 'white';
-let speedCount = 0;
 let animation;
 let gameOver = false;
 let check = Math.floor(Math.random() * 4) + 1;
@@ -105,10 +104,9 @@ function drawCenterLine() {
 
 
 
-function update() {
+function update(time = 0) {
     if (!gameOver) {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        speedCount++;
         drawBorders();
         drawPlayerPieces(player1.stick, player2.stick);
         drawGamePiece(gamePiece);
@@ -176,13 +174,13 @@ function playerupdatePos(dir, player) {
 
 document.addEventListener("keydown", (event) => {
     if (event.keyCode === 75) {
-        playerupdatePos(-10, player2);
+        playerupdatePos(-20, player2);
     } else if (event.keyCode === 77) {
-        playerupdatePos(10, player2);
+        playerupdatePos(20, player2);
     } else if (event.keyCode === 81) {
-        playerupdatePos(-10, player1);
+        playerupdatePos(-20, player1);
     } else if (event.keyCode === 65) {
-        playerupdatePos(10, player1);
+        playerupdatePos(20, player1);
     } else {
 
     }
